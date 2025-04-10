@@ -5,7 +5,7 @@ import { PageFooterComponent } from './components/page-footer/page-footer.compon
 
 @Component({
   selector: 'app-root',
-  imports: [MainWindowComponent, NavbarComponent, PageFooterComponent],
+  imports: [ MainWindowComponent, NavbarComponent, PageFooterComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
