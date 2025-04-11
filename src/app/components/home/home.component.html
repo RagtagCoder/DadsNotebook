@@ -15,64 +15,29 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+
+            @for (article of articles; track article.id) {
             <!-- Post preview-->
             <div class="post-preview">
                 <a href="post1">
-                    <h2 class="post-title">The accident prone prodigy</h2>
-                    <h3 class="post-subtitle">My son is like something from a comedy...</h3>
+                    <h2 class="post-title" [innerHtml]="article.heading"></h2>
+                    <h3 class="post-subtitle" [innerHtml]="article.subHeading"></h3>
                 </a>
                 <p class="post-meta">
                     Posted by
-                    <a href="#!">Owen</a>
-                    on September 24, 2023
+                    <a href="#!">{{article.author}}</a>
+                    on {{parseDateString(article.dateCreated)}}
                 </p>
             </div>
             <!-- Divider-->
             <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                  <h2 class="post-title">The cost of living... No, the cost of existing</h2>
-                  <h3 class="post-subtitle">"As my water bill exceeds what I pay for my car, I have to wonder where this is all going.</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Owen</a>
-                    on September 18, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Why Daddy Pig increases my blood pressure</h2>
-                    <h3 class="post-subtitle">"I'm a bit of an expert at shelf building", my god that pig is stupid</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Owen</a>
-                    on August 24, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Career choices for after you've burned out</h2>
-                    <h3 class="post-subtitle">Do what you love, that's what they all said to me. They were wrong!</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Owen</a>
-                    on July 8, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
+            } @empty {
+            <li>Ooops, no posts to display...</li>
+            }
+
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts
+                    →</a></div>
         </div>
     </div>
 </div>

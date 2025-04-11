@@ -1,15 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
-
-export interface Articles {
-    id: number;
-    heading: string;
-    subheading: string;
-    dateCreated: Date;
-    author: string;
-    content: string
-  }
+import { Article } from "../models/article";
   
   @Injectable({
     providedIn: 'root',
@@ -20,7 +12,7 @@ export interface Articles {
 
   constructor(private http: HttpClient) {}
 
-  getAllPosts(): Observable<Articles[]> {
-    return this.http.get<Articles[]>(this.apiUrl);
+  getAllPosts(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.apiUrl);
    }
 }

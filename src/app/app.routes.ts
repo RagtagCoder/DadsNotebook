@@ -5,6 +5,7 @@ import { PostOneComponent } from './components/posts/1/post-1.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact-me/contact.component';
 import { PostTwoComponent } from './components/posts/2/post-2.component';
+import { RegisterComponent } from './components/account/register/register.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'post1', component: PostOneComponent },
     { path: 'post2', component: PostTwoComponent },
+    { path: 'register', component: RegisterComponent },
     { path: '',
       redirectTo: '/home',
       pathMatch: 'full'
