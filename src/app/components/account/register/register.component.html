@@ -12,42 +12,67 @@
         </div>
     </div>
 </header>
+
 <form [formGroup]="registerForm">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <label for="username">Username: </label>
-                <input id="username" type="text" formControlName="username" />
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-form-field>
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-form-field>
+                    <mat-label>Last name</mat-label>
+                    <input matInput formControlName="lastName">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-form-field>
+                    <mat-label>Repeat password</mat-label>
+                    <input matInput formControlName="repeatPassword">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <mat-slide-toggle id="subscribe" formControlName="subscribe"
+                    labelPosition="before">Allow us to send you email updates?</mat-slide-toggle>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
             </div>
         </div>
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <label for="Email">Email: </label>
-                <input id="email" type="text" formControlName="email" />
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <label for="password">Password: </label>
-                <input id="password" type="text" formControlName="password" />
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <label for="repeatPassword">Repeat password: </label>
-                <input id="repeatPassword" type="text" formControlName="repeatPassword" />
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <label for="subscribe">Allow us to send you email updates?</label>
-                <input id="subscribe" type="checkbox" [value]="true" formControlName="subscribe" />
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="d-flex justify-content-end mb-4">
-                    <input type="button" class="btn btn-primary" (click)="updateName()" value="Update Name" />
+                <div class="d-flex justify-content-center mb-4">
+                    <section>
+                        <div class="example-button-row">
+                          <button mat-raised-button (click)="updateName()">Submit</button>
+                        </div>
+                      </section>
                 </div>
             </div>
         </div>
