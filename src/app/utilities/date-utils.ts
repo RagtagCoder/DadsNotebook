@@ -1,4 +1,5 @@
 import { formatDate } from "@angular/common";
+import { Article } from "../models/article";
 
 function parseDateString(date: Date): string {
     // Year / month / day
@@ -7,3 +8,4 @@ function parseDateString(date: Date): string {
 
     return formatDate(formattedDate,'MMM dd yyyy','en-US');
   }
+  

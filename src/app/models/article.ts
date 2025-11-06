@@ -1,8 +1,8 @@
 export interface Article {
-    id: number;
+    id: string;
     heading: string;
     subHeading: string;
     dateCreated: Date;
-    author: string;
-    content: string
+    author: string
+    // content: string
   }

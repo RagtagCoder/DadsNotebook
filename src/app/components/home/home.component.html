@@ -19,13 +19,15 @@
             @for (article of articles; track article.id) {
             <!-- Post preview-->
             <div class="post-preview">
-                <a href="post1">
-                    <h2 class="post-title" [innerHtml]="article.heading"></h2>
-                    <h3 class="post-subtitle" [innerHtml]="article.subHeading"></h3>
-                </a>
+                <a href={{article.id}}>
+                    <h4 class="post-title" [innerHtml]="article.heading"></h4>
+                    </a>
+                    <p [innerHtml]="article.subHeading">
+                        </p>
+                
                 <p class="post-meta">
                     Posted by
-                    <a href="#!">{{article.author}}</a>
+                    <a href="about">{{article.author}}</a>
                     on {{parseDateString(article.dateCreated)}}
                 </p>
             </div>

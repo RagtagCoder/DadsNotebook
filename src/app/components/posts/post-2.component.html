@@ -4,14 +4,18 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1>I have burnout from work, and I don't know what to do</h1>
-                    <h2 class="subheading"><i>Ever heard the saying "do what you love and you'll never work a day in your life"?</i>, <br>
-                        Yeah I call bullshit
+                    <h1>{{article.heading}}</h1>
+                    <h2 class="subheading">
+                        <i>
+                            {{article.subHeading}}
+                        </i>
                     </h2>
                     <span class="meta">
-                        Posted by
-                        <a href="#!">Watson</a>
-                        on 9th April, 2024
+                        <i>
+                            Posted by
+                            <a href="#!">{{article.author}}</a>
+                            on {{article.dateCreated | ordinalDate}}
+                        </i>
                     </span>
                 </div>
             </div>
