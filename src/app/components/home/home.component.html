@@ -38,8 +38,26 @@
             }
 
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts
-                    →</a></div>
+             <!-- <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="d-flex justify-content-end mb-4">
+                    <section>
+                        <div class="example-button-row">
+                          <button mat-raised-button color="primary" (click)="nextPage()">Submit</button>
+                        </div>
+                      </section>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="d-flex justify-content-end mb-4">
+                </div>
+            </div>
+        </div> -->
+            <div class="d-flex justify-content-end mb-4">
+                <button type="button" class="btn btn-primary text-uppercase" (click)="nextPage($event)">
+                    Older Posts →
+                </button>
+            </div>
         </div>
     </div>
 </div>

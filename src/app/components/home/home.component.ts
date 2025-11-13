@@ -1,39 +1,37 @@
 import { Component } from '@angular/core';
 import { Article } from '../../models/article';
-import { getIndexOfArticles } from '../../utilities/post-index'
-import { PurpleFenixApi } from '../../services/purplefenixapi';
+import { getPageOfArticles } from '../../utilities/post-index'
 import { formatDate } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
+  imports: [MatInputModule, MatButtonModule]
 })
 export class HomeComponent {
   title = 'Home';
 
   articles: Article[] = [];
+  pageNumber = 1;
   errorMessage!: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.articles = this.getLastNElements(getIndexOfArticles(), 5);
+    const pageData = getPageOfArticles(this.pageNumber, 1);
+    this.articles = pageData.items;
+  }
+
+  public nextPage(event: Event): void {
+    event.stopPropagation();
+    this.pageNumber++;
+    const pageData = getPageOfArticles(this.pageNumber, 1);
+    this.articles = pageData.items;
   }
 
   parseDateString(date: Date): string {
     return formatDate(date, 'MMMM dd yyyy', 'en-US');
   }
-
-  // Function to get the last N elements from an array
-  getLastNElements<T>(arr: T[], n: number): T[] {
-    if (!Array.isArray(arr)) {
-      throw new Error("First argument must be an array");
-    }
-    if (typeof n !== "number" || n < 0) {
-      throw new Error("Number of elements must be a non-negative integer");
-    }
-    // slice(-n) returns the last n elements; handles n > arr.length automatically
-    return arr.slice(-n);
-  }
-
 }

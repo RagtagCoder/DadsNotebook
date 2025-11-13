@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Article } from '../../models/article';
 import { formatDate } from '@angular/common';
-import { getIndexOfArticles } from '../../utilities/post-index';
+import { getArticleById } from '../../utilities/post-index';
 import { OrdinalDatePipe } from "../../utilities/pipes";
 
 @Component({
@@ -14,12 +14,7 @@ export class PostOneComponent {
   title = 'PostOne';
 
   constructor() {
-    const articles: Article[] = getIndexOfArticles();
-    for (let art of articles) {
-      if (art.id == 'post-1') {
-        this.article = art;
-      }
-    }
+    const article: Article = getArticleById('post-1');
   }
 
   parseDateString(date: Date): string {
