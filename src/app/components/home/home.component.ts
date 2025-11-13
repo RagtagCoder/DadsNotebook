@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Article } from '../../models/article';
 import { getPageOfArticles } from '../../utilities/post-index'
-import { formatDate } from '@angular/common';
+import { NgIf, formatDate } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
-  imports: [MatInputModule, MatButtonModule]
+  imports: [MatInputModule, MatButtonModule, NgIf]
 })
 export class HomeComponent {
   title = 'Home';
@@ -24,8 +24,13 @@ export class HomeComponent {
     this.articles = pageData.items;
   }
 
-  public nextPage(event: Event): void {
-    event.stopPropagation();
+  previousPage(): void {
+    this.pageNumber--;
+    const pageData = getPageOfArticles(this.pageNumber, 1);
+    this.articles = pageData.items;
+  }
+
+  nextPage(): void {
     this.pageNumber++;
     const pageData = getPageOfArticles(this.pageNumber, 1);
     this.articles = pageData.items;
