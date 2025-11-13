@@ -4,8 +4,12 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>A really cool blog title</h1>
-                    <span class="subheading">by Owen</span>
+                    <h1>Welcome to <br>
+                        Dad's notebook</h1>
+                    <span class="subheading">From rants about life's annoyances, to general advice from the experience of my
+                        successes and failures. Dad's notebook aims to provide content that's either relatable or helpful
+                        to the modern day father that's just trying to do his best and find his way. 
+                    </span>
                 </div>
             </div>
         </div>
@@ -48,28 +52,19 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="d-flex justify-content-center mb-4">
+                        Page {{pageNumber}} of {{pageData.totalPages}}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 col-xl-4">
                     <div class="d-flex justify-content-start mb-4">
-                        <button type="button" class="btn btn-primary text-uppercase justify-content-end mb-4"
-                    (click)="nextPage()">
-                    Older Posts →
-                </button>
+                        <button type="button" *ngIf="pageNumber < pageData.totalPages"
+                            class="btn btn-primary text-uppercase justify-content-end mb-4" (click)="nextPage()">
+                            Older Posts →
+                        </button>
                     </div>
                 </div>
             </div>
-
-
-            <!-- <div class="d-flex">
-                <div class="justify-content-start mb-4">
-                    <button type="button" *ngIf="pageNumber > 1" class="btn btn-primary text-uppercase" (click)="previousPage()">
-                        ← Newer Posts
-                    </button>
-                </div>
-                <div class="justify-content-end mb-4">
-                    <button type="button" class="btn btn-primary text-uppercase justify-content-end mb-4" (click)="nextPage()">
-                        Older Posts →
-                    </button>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>
