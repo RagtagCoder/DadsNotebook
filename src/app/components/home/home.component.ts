@@ -42,4 +42,8 @@ export class HomeComponent {
   parseDateString(date: Date): string {
     return formatDate(date, 'MMMM dd yyyy', 'en-US');
   }
+
+  setUrlForArticle(url: string): string {
+    return `/articles/${url}`;
+  }
 }

@@ -23,7 +23,7 @@
             @for (article of articles; track article.id) {
             <!-- Post preview-->
             <div class="post-preview">
-                <a href={{article.id}}>
+                <a href={{setUrlForArticle(article.route)}}>
                     <h4 class="post-title" [innerHtml]="article.heading"></h4>
                 </a>
                 <p [innerHtml]="article.subHeading">

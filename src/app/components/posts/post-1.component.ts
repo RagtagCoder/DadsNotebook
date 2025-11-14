@@ -14,7 +14,7 @@ export class PostOneComponent {
   title = 'PostOne';
 
   constructor() {
-    this.article = getArticleById('post-1');
+    this.article = getArticleById(1);
     console.log(this.article);
   }
 

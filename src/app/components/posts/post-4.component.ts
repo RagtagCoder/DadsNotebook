@@ -14,7 +14,7 @@ export class PostTwoComponent {
     title = 'PostTwo';
 
   constructor() {
-      const article: Article = getArticleById('post-4');
+      const article: Article = getArticleById(4);
     }
 
   parseDateString(date: Date): string {
