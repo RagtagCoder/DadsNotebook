@@ -6,9 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
-  imports: [ MainWindowComponent, NavbarComponent, PageFooterComponent, MatFormFieldModule, MatInputModule],
+  imports: [ MainWindowComponent, NavbarComponent, PageFooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
