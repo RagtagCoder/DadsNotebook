@@ -15,7 +15,6 @@ export class PostOneComponent {
 
   constructor() {
     this.article = getArticleById(1);
-    console.log(this.article);
   }
 
   parseDateString(date: Date): string {

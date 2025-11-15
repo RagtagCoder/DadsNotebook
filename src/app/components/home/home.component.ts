@@ -23,19 +23,19 @@ export class HomeComponent {
   constructor() { }
 
   ngOnInit() {
-    this.pageData = getPageOfArticles(this.pageNumber, this.articlesPerPage);
+    this.pageData = getPageOfArticles(null, this.pageNumber, this.articlesPerPage);
     this.articles = this.pageData.items;
   }
 
   previousPage(): void {
     this.pageNumber--;
-    this.pageData = getPageOfArticles(this.pageNumber, this.articlesPerPage);
+    this.pageData = getPageOfArticles(null, this.pageNumber, this.articlesPerPage);
     this.articles = this.pageData.items;
   }
 
   nextPage(): void {
     this.pageNumber++;
-    this.pageData = getPageOfArticles(this.pageNumber, this.articlesPerPage);
+    this.pageData = getPageOfArticles(null, this.pageNumber, this.articlesPerPage);
     this.articles = this.pageData.items;
   }
 

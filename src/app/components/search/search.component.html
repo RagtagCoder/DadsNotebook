@@ -1,0 +1,84 @@
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h2 class="subheading">Search the archive</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<form [formGroup]="searchForm">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-8 col-lg-8 col-xl-8">
+                <mat-form-field>
+                    <mat-label>SearchBar</mat-label>
+                    <input matInput formControlName="searchBar">
+                </mat-form-field>
+                <button type="button" class="btn btn-primary text-uppercase justify-content-end mb-4" (click)="search()">
+                            Search
+                        </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+ <!-- Divider-->
+<hr class="my-4" />
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+            @for (article of articles; track article.id) {
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href={{setUrlForArticle(article.route)}}>
+                    <h4 class="post-title" [innerHtml]="article.heading"></h4>
+                </a>
+                <p [innerHtml]="article.subHeading">
+                </p>
+
+                <p class="post-meta">
+                    Posted by
+                    <a href="about">{{article.author}}</a>
+                    on {{parseDateString(article.dateCreated)}}
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            } @empty {
+            <li>Ooops, no posts to display...</li>
+            }
+
+            <!-- Pager-->
+            <div *ngIf="pageNumber > 0 && totalPages > 0" class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="d-flex justify-content-start mb-4">
+                        <button type="button" *ngIf="pageNumber > 1" class="btn btn-primary text-uppercase"
+                            (click)="previousPage()">
+                            ← Newer Posts
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="d-flex justify-content-center mb-4">
+                        Page {{pageNumber}} of {{totalPages}}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="d-flex justify-content-start mb-4">
+                        <button type="button" *ngIf="pageNumber < pageData.totalPages"
+                            class="btn btn-primary text-uppercase justify-content-end mb-4" (click)="nextPage()">
+                            Older Posts →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,9 +21,23 @@ export function getArticleByRoute(id: string): Article {
   }
 }
 
-export function getPageOfArticles(page: number, articlesPerPage: number): PaginationData {
+export function getPageOfArticles(searchTerm: string | null, page: number, articlesPerPage: number): PaginationData {
 
-  const articles = getAllArticles();
+  let articles = getAllArticles();
+  let refinedArticles: Article[] = [];
+  if (searchTerm !== null && searchTerm !== undefined && searchTerm !== '') {
+    searchTerm = searchTerm.toLocaleLowerCase();
+    
+    for (let item of articles) {
+      if (item.heading.toLocaleLowerCase().includes(searchTerm)
+      || item.subHeading.toLocaleLowerCase().includes(searchTerm)
+      || item.author.toLocaleLowerCase().includes(searchTerm)) {
+        refinedArticles.push(item);
+      }
+    }
+
+    articles = refinedArticles
+  }
 
   const totalItems = articles.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / articlesPerPage));
