@@ -4,5 +4,6 @@ export interface Article {
     heading: string;
     subHeading: string;
     dateCreated: Date;
-    author: string
+    author: string,
+    imageUrl: string
   }

@@ -67,7 +67,8 @@ export function getAllArticles(): Article[] {
     author: 'Michael Truman',
     heading: `I have burnout from work, and I don't know what to do`,
     subHeading: `Do what you love and you'll never work a day in your life".... What a a load of crap!`,
-    dateCreated: new Date(2025, 5, 25)
+    dateCreated: new Date(2025, 5, 25),
+    imageUrl: 'office-stress.jpg'
   } as Article);
 
   articleIndex.push({
@@ -76,7 +77,8 @@ export function getAllArticles(): Article[] {
     author: 'Michael Truman',
     heading: '10 things I wish my dad had taught me',
     subHeading: `I learned the hard way many times, hopefully my son won't have to`,
-    dateCreated: new Date(2025, 9, 23)
+    dateCreated: new Date(2025, 9, 23),
+    imageUrl: 'father-kids-silouette.jpg'
   } as Article);
 
   articleIndex.push({
@@ -85,7 +87,8 @@ export function getAllArticles(): Article[] {
     author: 'Michael Truman',
     heading: 'The skills all men should know by the time they have a family of their own',
     subHeading: `Whether it's a flat tyre or a dead boiler, everyone is looking at you to save the day.`,
-    dateCreated: new Date(2025, 9, 23)
+    dateCreated: new Date(2025, 9, 23),
+    imageUrl: 'dad-fixer.jpg'
   } as Article);
 
   articleIndex.push({
