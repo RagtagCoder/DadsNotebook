@@ -10,7 +10,7 @@
     ]
   },
   "files": [
-    "src/main.ts",
+    "main.ts",
     "src/main.server.ts",
     "src/server.ts"
   ],
