@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/the-blog",
             "index": "index.html",
-            "browser": "src/main.ts",
+            "browser": "main.ts",
             "polyfills": [
               "zone.js",
               "@angular/localize/init"
