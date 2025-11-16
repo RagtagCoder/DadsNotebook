@@ -1,10 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/misc/page-not-found.component';
-import { PostOneComponent } from './components/posts/post-1.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact-me/contact.component';
-import { PostTwoComponent } from './components/posts/post-2.component';
 import { RegisterComponent } from './components/account/register/register.component';
 import { ArticleComponent } from './components/posts/article.component';
 import { UnderConstructionComponent } from './components/misc/under-construction.component';
@@ -15,8 +13,6 @@ export const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'search', component: SearchComponent },
-    { path: 'post-1', component: PostOneComponent },
-    { path: 'post-2', component: PostTwoComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'articles/:id', component: ArticleComponent},
     { path: '',
