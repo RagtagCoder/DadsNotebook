@@ -11,14 +11,14 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/the-blog",
-            "index": "src/index.html",
+            "index": "index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
