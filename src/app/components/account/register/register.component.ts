@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -8,61 +8,64 @@ import { AccountData } from '../../../models/account-data';
 import { PurpleFenixApi } from '../../../services/purplefenixapi';
 
 @Component({
-    selector: 'register',
-    templateUrl: './register.component.html',
-    imports: [
-      ReactiveFormsModule,
-      MatFormField,
-      MatFormFieldModule,
-      MatInputModule,
-      MatSlideToggleModule,
-      MatButtonModule],
+  selector: 'register',
+  templateUrl: './register.component.html',
+  imports: [
+    ReactiveFormsModule,
+    MatFormField,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSlideToggleModule,
+    MatButtonModule],
 })
 export class RegisterComponent {
-    title = 'Register';
-    _api: PurpleFenixApi;
 
-    registerForm = new FormGroup({
-        firstName: new FormControl(''),
-        lastName: new FormControl(''),
-        username: new FormControl(''),
-        email: new FormControl(''),
-        password: new FormControl(''),
-        repeatPassword: new FormControl(''),
-        subscribe: new FormControl('true'),
-      });
+  title = 'Register';
+  _api: PurpleFenixApi;
+  form: FormGroup;
 
-      constructor(private service: PurpleFenixApi){
-        this._api = service;
-      }
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  repeatPassword: string = '';
+  subscribe: boolean = false;
 
-    registerNewUser() {
-      //check details
 
-      // const user: AccountData = {
-      //   firstName: this.registerForm.get('firstName')?.value?.toString() as string,
-      //   lastname: this.registerForm.get('lastName')?.value?.toString() as string,
-      //   emailAddress: this.registerForm.get('email')?.value?.toString() as string,
-      //   password: this.registerForm.get('firstName')?.value?.toString() as string,
-      //   dateCreated: new Date(),
-      //   contactNumber: '999',
-      //   isAdmin: false,
-      //   isOnMailingList: false,
-      //   isOnMessagingList: false
-      // };
+  constructor(private service: PurpleFenixApi, private fb: FormBuilder) {
+    this._api = service;
 
+    this.form = this.fb.group({
+      username: [this.username, [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      email: [this.email, [Validators.required, Validators.email]],
+      password: [this.password, [Validators.required, Validators.minLength(8), Validators.maxLength(250)]],
+      repeatPassword: [this.repeatPassword, [Validators.required, Validators.minLength(8), Validators.maxLength(250)], this.password === this.repeatPassword],
+      subscribe: [this.subscribe],
+    });
+  }
+
+  async registerNewUser() {
+    //check details
+    const passwordsMatch = this.password === this.repeatPassword;
+    const usernameIsUnique = await this._api.usernameIsUnique(this.username);
+
+
+    if (passwordsMatch && usernameIsUnique) {
       const user: AccountData = {
-        firstName: 'Owen',
-        lastname: 'test',
-        emailAddress: 'email@email.com',
-        password: 'password',
+        username: this.username,
+        emailAddress: this.email,
+        password: this.password,
         dateCreated: new Date(),
-        contactNumber: '999',
-        isAdmin: false,
-        isOnMailingList: false,
-        isOnMessagingList: false
+        isOnMailingList: this.subscribe
       };
+      await this._api.createUser(user);
+    }
+  }
 
-        this._api.createUser(user);
-      }
+  passwordsMatch(accountData: AccountData): boolean {
+    if (accountData.password !== this.repeatPassword) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

@@ -12,22 +12,8 @@
     </div>
 </header>
 
-<form [formGroup]="registerForm">
+<form [formGroup]="form">
     <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-6 col-lg-5 col-xl-4">
-                <mat-form-field>
-                    <mat-label>First name</mat-label>
-                    <input matInput formControlName="firstName">
-                </mat-form-field>
-            </div>
-            <div class="col-md-6 col-lg-5 col-xl-4">
-                <mat-form-field>
-                    <mat-label>Last name</mat-label>
-                    <input matInput formControlName="lastName">
-                </mat-form-field>
-            </div>
-        </div>
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-6 col-lg-5 col-xl-4">
                 <mat-form-field>
@@ -37,7 +23,7 @@
             </div>
             <div class="col-md-6 col-lg-5 col-xl-4">
                 <mat-form-field>
-                    <mat-label>Email</mat-label>
+                    <mat-label>Email Address</mat-label>
                     <input matInput formControlName="email">
                 </mat-form-field>
             </div>

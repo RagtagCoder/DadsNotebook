@@ -36,5 +36,12 @@ export class PurpleFenixApi {
       error: (error) => { return error }
     });
   }
+
+  async usernameIsUnique(name: string): Promise<any> {
+    this.http.get(`${this.baseUrl}/user/check-username/${name}`).subscribe({
+      next: (response) => { return response },
+      error: (error) => { return error }
+    });
+  }
 }
 

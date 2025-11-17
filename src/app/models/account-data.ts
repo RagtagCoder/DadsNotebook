@@ -1,11 +1,7 @@
 export interface AccountData {
+    username: string,
     emailAddress: string,
-    contactNumber: string,
-    firstName: string,
-    lastname: string,
-    isAdmin: boolean,
     isOnMailingList: boolean,
-    isOnMessagingList: boolean,
     dateCreated: Date,
     password: string
 }
