@@ -20,27 +20,14 @@ steps:
     npm install
     ng build
   displayName: 'npm install and build'
-
-# Node.js with Angular
-# - task: AzureRmWebAppDeployment@5
-#   inputs:
-#     ConnectionType: 'AzureRM'
-#     azureSubscription: 'Pay-As-You-Go(effd4309-842a-40a0-a6a7-3727cd74e6fe)'
-#     appType: 'webAppLinux'
-#     WebAppName: 'DadsNotebook'
-#     deployToSlotOrASE: true
-#     ResourceGroupName: 'thewatson_rsg'
-#     SlotName: 'production'
-#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-#     RuntimeStack: 'NODE|22-lts'
-#     DeploymentTypeLinux: 'oneDeploy'
-
-- task: AzureRmWebAppDeployment@5
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(1)(effd4309-842a-40a0-a6a7-3727cd74e6fe)'
     appType: 'webAppLinux'
-    WebAppName: 'DadsNotebook'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|22-lts'
-    StartupCommand: 'ng start'
-    DeploymentTypeLinux: 'oneDeploy'
+    appName: 'DadsNotebook'
+    deployToSlotOrASE: true
+    resourceGroupName: 'thewatson_rsg'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'NODE|22-lts'
+    startUpCommand: 'ng start'
