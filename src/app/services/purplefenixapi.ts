@@ -1,18 +1,40 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
-import { Article } from "../models/article";
-  
-  @Injectable({
-    providedIn: 'root',
-  })
-  export class PurpleFenixApi {
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CreatePageVisitRequest } from "../utilities/page-visit";
+import { AccountData } from "../models/account-data";
+import { LoginRequest } from "../models/loginRequest";
 
-  apiUrl = "http://localhost:5182/articles/get-all";
+@Injectable({
+  providedIn: 'root',
+})
+export class PurpleFenixApi {
 
-  constructor(private http: HttpClient) {}
+  baseUrl = "http://localhost:5182";
 
-  getAllPosts(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.apiUrl);
-   }
+  constructor(private http: HttpClient) { }
+
+  async sendPageVisitLog(sourcePage: string): Promise<any> {
+    const request = CreatePageVisitRequest(sourcePage);
+
+    this.http.post(`${this.baseUrl}/visit/get-total`, request).subscribe({
+      next: (response) => { return response },
+      error: (error) => { return error }
+    });
+  }
+
+  async createUser(user: AccountData): Promise<any> {
+    this.http.post(`${this.baseUrl}/user/new-user`, user).subscribe({
+      next: (response) => { return response },
+      error: (error) => { return error }
+    });
+  }
+
+
+  async getAuthToken(loginRequest: LoginRequest): Promise<any> {
+    this.http.post(`${this.baseUrl}/user/login`, loginRequest).subscribe({
+      next: (response) => { return response },
+      error: (error) => { return error }
+    });
+  }
 }
+
