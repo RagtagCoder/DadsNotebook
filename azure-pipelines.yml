@@ -1,40 +1,29 @@
-
-# Build a Node.js project that uses Angular.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
-  branches:
-    include:
-      - main  
-
-pool:
-  vmImage: ubuntu-latest
+- main
 
 steps:
+# Install Node.js
 - task: NodeTool@0
   inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
+    versionSpec: '22.x'
+    displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build
-  displayName: 'npm install and build'
+# Install Angular CLI
+- script: npm install -g @angular/cli
+  displayName: 'Install Angular CLI'
 
+# Install dependencies
+- script: npm install
+  workingDirectory: src
+  displayName: 'Install Dependencies'
+
+# Build the application
+- script: npm run build -- --prod
+  workingDirectory: src
+  displayName: 'Build Application'
+
+# Publish build artifacts
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'DadsNotebook'
-    
-- task: AzureRmWebAppDeployment@5
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Pay-As-You-Go(effd4309-842a-40a0-a6a7-3727cd74e6fe)'
-    appType: 'webAppLinux'
-    WebAppName: 'DadsNotebook'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|22-lts'
-    StartupCommand: 'ng start'
-    DeploymentTypeLinux: 'oneDeploy'
+    pathtoPublish: 'dist/dadsnotebook/browser'
+    artifactName: 'angular-build'
