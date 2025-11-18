@@ -14,12 +14,12 @@ steps:
 
 # Install dependencies
 - script: npm install
-  workingDirectory: /
+  workingDirectory: /src
   displayName: 'Install Dependencies'
 
 # Build the application
 - script: ng build --prod
-  workingDirectory: /
+  workingDirectory: /src
   displayName: 'Build Application'
 
 # Publish build artifacts
