@@ -18,7 +18,7 @@ steps:
   displayName: 'Install Dependencies'
 
 # Build the application
-- script: ng build --prod
+- script: ng build
   workingDirectory: src
   displayName: 'Build Application'
 
